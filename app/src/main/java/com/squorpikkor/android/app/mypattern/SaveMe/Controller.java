@@ -10,20 +10,27 @@ import java.util.HashMap;
 
 public class Controller {
     private SharedPreferences preferences;
+    private SharedPreferences objPref;
     private HashMap<String, SharedPreferences> prefMap;
     private final String LIST_SAVER = "list_saver";
-    private final String OBJ_MAP_SAVER = "object_map_saver";
+//    private final String OBJ_MAP_SAVER = "object_map_saver";
     private final String SAVE_FIELD = "setting";
 
     private ArrayList<MyClass> objList;//Set???
     private ArrayList<String> objNameList;
 
-    Context context;
+    private Context context;
 
-    Controller(Context context) {
+    public Controller(Context context) {
+        this.context = context;
         objList = new ArrayList<>();
         objNameList = new ArrayList<>();
         preferences = context.getSharedPreferences(LIST_SAVER, Context.MODE_PRIVATE);
+        prefMap = new HashMap<>();
+//        objPref = (context.getSharedPreferences("1", Context.MODE_PRIVATE));
+//        objPref = (context.getSharedPreferences("2", Context.MODE_PRIVATE));
+//        objPref = (context.getSharedPreferences("3", Context.MODE_PRIVATE));
+
 
     }
 
@@ -43,8 +50,26 @@ public class Controller {
     }*/
 
     void saveObject(MyClass obj) {
-        prefMap.put(obj.name, (context.getSharedPreferences(obj.name, Context.MODE_PRIVATE)));
+        if (!prefMap.containsKey(obj.name)) {
+            prefMap.put(obj.name, (context.getSharedPreferences(obj.name, Context.MODE_PRIVATE)));
+        }
         saveStringArray(obj.getAllVar(), prefMap.get(obj.name));
+
+
+    }
+
+    void loadObject(String name) {
+
+    }
+
+    void saveObjList() {
+        for (MyClass mClass : objList) {
+            saveObject(mClass);
+        }
+    }
+
+    void loadObjList() {
+
     }
 
     void SaveObjNameList() {
