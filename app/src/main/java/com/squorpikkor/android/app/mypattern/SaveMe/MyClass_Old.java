@@ -11,7 +11,8 @@ import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 
-public class MyClass_Old implements Saveable {
+//public class MyClass_Old implements Saveable {
+public class MyClass_Old {
     private SharedPreferences preferences;
 
     MyClass_Old(String name, Context context) {
@@ -25,7 +26,7 @@ public class MyClass_Old implements Saveable {
     String name = "var1";
     int var2 = 10;
 
-    @Override
+    /*@Override
     public ArrayList<String> getAllVar() {
         return null;
     }
@@ -45,5 +46,5 @@ public class MyClass_Old implements Saveable {
     public void loadMe() {
 //        MyClass_Old()
 
-    }
+    }*/
 }
