@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyPattern</string>
+    <string name="create_new_object">Create New Object</string>
+    <string name="load_user">Load user</string>
 </resources>

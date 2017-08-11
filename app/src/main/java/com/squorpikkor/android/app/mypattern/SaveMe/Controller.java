@@ -9,17 +9,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Controller {
+
+    //region ClassFields
     private SharedPreferences preferences;
     private SharedPreferences objPref;
     private HashMap<String, SharedPreferences> prefMap;
     private final String LIST_SAVER = "list_saver";
-//    private final String OBJ_MAP_SAVER = "object_map_saver";
     private final String SAVE_FIELD = "setting";
 
     private ArrayList<MyClass> objList;//Set???
     private ArrayList<String> objNameList;
 
     private Context context;
+    //endregion
 
     public Controller(Context context) {
         this.context = context;
@@ -27,29 +29,31 @@ public class Controller {
         objNameList = new ArrayList<>();
         preferences = context.getSharedPreferences(LIST_SAVER, Context.MODE_PRIVATE);
         prefMap = new HashMap<>();
-//        objPref = (context.getSharedPreferences("1", Context.MODE_PRIVATE));
-//        objPref = (context.getSharedPreferences("2", Context.MODE_PRIVATE));
-//        objPref = (context.getSharedPreferences("3", Context.MODE_PRIVATE));
-
-
     }
 
-    void createNewObj(String name) {
+    private MyClass getObj(String name) {
+        for (MyClass myClass : objList) {
+            if (myClass.name.equals(name)) {
+                return myClass;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<String> getObjVarArray(String name) {
+        return getObj(name).getAllVar();
+    }
+
+    public void createObj(String name) {
         if (!objNameList.contains(name)) {
             objList.add(new MyClass(name));
             objNameList.add(name);
+            saveObjList();
+            saveObjNameList();
         }
     }
 
-    /*void saveObject(MyClass obj) {
-        prefMap = new HashMap<>();//Or it should be initialized when created?
-        prefMap.put(obj.name, (context.getSharedPreferences(obj.name, Context.MODE_PRIVATE)));
-        SharedPreferences.Editor editor = prefMap.get(obj.name).edit();
-        editor.clear();
-
-    }*/
-
-    void saveObject(MyClass obj) {
+    public void saveObject(MyClass obj) {
         if (!prefMap.containsKey(obj.name)) {
             prefMap.put(obj.name, (context.getSharedPreferences(obj.name, Context.MODE_PRIVATE)));
         }
@@ -58,25 +62,25 @@ public class Controller {
 
     }
 
-    void loadObject(String name) {
+    public void loadObject(String name) {
 
     }
 
-    void saveObjList() {
+    public void saveObjList() {
         for (MyClass mClass : objList) {
             saveObject(mClass);
         }
     }
 
-    void loadObjList() {
+    public void loadObjList() {
 
     }
 
-    void SaveObjNameList() {
+    public void saveObjNameList() {
         saveStringArray(objNameList);
     }
 
-    void loadObjNameList() {
+    public void loadObjNameList() {
         loadStringArray(objNameList);
     }
 
