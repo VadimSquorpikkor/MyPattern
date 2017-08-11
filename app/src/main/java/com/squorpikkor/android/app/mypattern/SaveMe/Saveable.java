@@ -4,8 +4,9 @@ package com.squorpikkor.android.app.mypattern.SaveMe;
 
 import java.util.ArrayList;
 
-interface Saveable {
+public interface Saveable {
 
+    String name = null;
     void setAllVar();
     ArrayList<String> getAllVar();
 }

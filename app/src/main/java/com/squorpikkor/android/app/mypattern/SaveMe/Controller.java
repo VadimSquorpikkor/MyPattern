@@ -18,6 +18,9 @@ public class Controller {
     private final String SAVE_FIELD = "setting";
 
     private ArrayList<MyClass> objList;//Set???
+    /**    private ArrayList<Saveable> objList2;//
+     *     ArrayList should be with interface implementation type
+     */
     private ArrayList<String> objNameList;
 
     private Context context;

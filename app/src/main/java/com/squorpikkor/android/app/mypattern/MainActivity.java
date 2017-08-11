@@ -7,12 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.squorpikkor.android.app.mypattern.SaveMe.Controllable;
 import com.squorpikkor.android.app.mypattern.SaveMe.Controller;
+import com.squorpikkor.android.app.mypattern.SaveMe.Saveable;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Controllable{
 
     //    ListWS listWS;
     Controller controller;
+//    Saveable saveable;
     EditText editText;
     Button button;
     TextView textView;
@@ -45,4 +48,16 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(listener);
 
     }
+
+    @Override
+    public void saveObjList() {
+
+    }
+
+    @Override
+    public void loadObjList() {
+
+    }
+
+
 }
