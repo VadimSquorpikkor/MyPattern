@@ -4,9 +4,11 @@ package com.squorpikkor.android.app.mypattern.SaveMe;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 public class Controller {
 
@@ -16,10 +18,12 @@ public class Controller {
     private HashMap<String, SharedPreferences> prefMap;
     private final String LIST_SAVER = "list_saver";
     private final String SAVE_FIELD = "setting";
+    public static final String TAG = "LOG!!!";
 
     private ArrayList<MyClass> objList;//Set???
-    /**    private ArrayList<Saveable> objList2;//
-     *     ArrayList should be with interface implementation type
+    /**
+     * private ArrayList<Saveable> objList2;//
+     * ArrayList should be with interface implementation type
      */
     private ArrayList<String> objNameList;
 
@@ -50,9 +54,14 @@ public class Controller {
     public void createObj(String name) {
         if (!objNameList.contains(name)) {
             objList.add(new MyClass(name));
+            String nameLine = "";
+            for (MyClass mClass : objList) {
+                nameLine += mClass.name + ", ";
+            }
+            Log.e(TAG, nameLine);
             objNameList.add(name);
-            saveObjList();
-            saveObjNameList();
+//            saveObjList();
+//            saveObjNameList();
         }
     }
 
@@ -66,7 +75,9 @@ public class Controller {
     }
 
     public void loadObject(String name) {
-
+//        loadObjNameList();
+//        loadStringArray();
+        //prefMap.get(name)
     }
 
     public void saveObjList() {

@@ -11,12 +11,14 @@ class MyClass implements Saveable{
     }
 
     @Override
-    public void setAllVar() {
-
+    public void setAllVar(ArrayList<String> list) {
+        name = list.get(0);
     }
 
     @Override
     public ArrayList<String> getAllVar() {
-        return null;
+        ArrayList<String> list = new ArrayList<>();
+        list.add(name);
+        return list;
     }
 }

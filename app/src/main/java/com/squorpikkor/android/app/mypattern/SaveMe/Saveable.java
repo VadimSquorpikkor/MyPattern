@@ -7,6 +7,6 @@ import java.util.ArrayList;
 public interface Saveable {
 
     String name = null;
-    void setAllVar();
+    void setAllVar(ArrayList<String> list);
     ArrayList<String> getAllVar();
 }
